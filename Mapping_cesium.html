@@ -39,7 +39,26 @@
     const buildingTileset = await Cesium.createOsmBuildingsAsync();
     viewer.scene.primitives.add(buildingTileset);  
 
-    var kmllayer = viewer.dataSources.add(Cesium.kmlDataSource.load('https://drive.google.com/file/d/1dh95dpIwIzN0GJ5CA67KTy6rxpoezd9V', options))
+    // Function to load a KMZ file
+function loadKMZ(kmzFile) {
+  // Create a CZMLDataSource
+  const czmlDataSource = new Cesium.CzmlDataSource();
+
+  // Load the KMZ file into the CZMLDataSource
+  czmlDataSource.load(kmzFile).then(() => {
+    // Add the CZMLDataSource to the Viewer
+    viewer.dataSources.add(czmlDataSource);
+
+    // Adjust camera position if necessary
+    if (czmlDataSource.entities.length > 0) {
+      const entity = czmlDataSource.entities.values()[0];
+      viewer.camera.flyTo(entity);
+    }
+  });
+}
+
+// Example usage:
+loadKMZ('https://drive.google.com/file/d/1dh95dpIwIzN0GJ5CA67KTy6rxpoezd9V');
     
   </script>
  </div>
