@@ -25,3 +25,26 @@ document.getElementById('routeSelect').addEventListener('change', function() {
 }); 
 // Draw initial route 
 drawRoute('route1');
+
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdown = document.getElementById('dropdown');
+
+    // Define the API endpoint
+    const apiURL = 'https://api.example.com/data'; // Replace with your API endpoint
+
+    // Fetch data from the API
+    fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+            // Assuming the API returns an array of objects with 'id' and 'name' properties
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item.id;
+                option.textContent = item.name;
+                dropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
