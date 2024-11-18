@@ -22,9 +22,9 @@
     try {
   const tileset = await Cesium.createGooglePhotorealistic3DTileset();
   viewer.scene.primitives.add(tileset);
-} catch (error) {
+    } catch (error) {
   console.log(`Failed to load tileset: ${error}`);
-}
+  }
 
     // Fly the camera to San Francisco at the given longitude, latitude, and height.
     viewer.camera.flyTo({
@@ -35,6 +35,8 @@
       }
     });
 
+    var cesiumWidget = new Cesium.CesiumWidget('cesiumContainer');
+    
     // Add Cesium OSM Buildings, a global 3D buildings layer.
     const buildingTileset = await Cesium.createOsmBuildingsAsync();
     viewer.scene.primitives.add(buildingTileset);  
@@ -57,10 +59,19 @@ function loadKMZ(kmzFile) {
   });
 }
 
-// Example usage:
-loadKMZ('https://drive.google.com/file/d/1dh95dpIwIzN0GJ5CA67KTy6rxpoezd9V');
+  // Example usage:
+  loadKMZ('https://drive.google.com/file/d/1dh95dpIwIzN0GJ5CA67KTy6rxpoezd9V');
     
   </script>
+<div id="button">
+  <script>
+    var myButton = document.createElement("Test Button");
+      myButton.type = "button";
+      myButton.value = "Click here";
+      document.getElementById("button").appendChild(myButton);
+    </script>
+</div>
+  
  </div>
 </body>
 </html>
