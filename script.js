@@ -8,6 +8,29 @@ const routes = {
     Cesium.Cartesian3.fromDegrees(-75.30, 40.00), Cesium.Cartesian3.fromDegrees(-75.40, 40.00) 
   ] 
 }; 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const dropdown = document.getElementById('ddELR');
+    const apiUrl = 'https://www.digitalitysolutions.co.uk/_functions/get_elrComplete'; // Replace with your actual API endpoint
+
+    // Fetch data from the API
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            // Assuming data is an array of objects with 'id' and 'name' properties
+            data.forEach(item => {
+                const option = document.createElement('option');
+                option.value = item._id;
+                option.textContent = item.elr;
+                dropdown.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
+});
+
+
 // Function to draw a route 
 function drawRoute(route) { 
   viewer.entities.removeAll(); // Clear existing entities 
@@ -18,6 +41,8 @@ function drawRoute(route) {
   }); 
   viewer.zoomTo(viewer.entities); 
 } 
+
+
 // Handle dropdown change 
 document.getElementById('routeSelect').addEventListener('change', function() { 
   const selectedRoute = this.value; 
@@ -26,25 +51,3 @@ document.getElementById('routeSelect').addEventListener('change', function() {
 // Draw initial route 
 drawRoute('route1');
 
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdown = document.getElementById('dropdown');
-
-    // Define the API endpoint
-    const apiURL = 'https://www.digitalitysolutions.co.uk/_functions/get_elrComplete'; // Replace with your API endpoint
-
-    // Fetch data from the API
-    fetch(apiURL)
-        .then(response => response.json())
-        .then(data => {
-            // Assuming the API returns an array of objects with 'id' and 'name' properties
-            data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.id;
-                option.textContent = item.name;
-                dropdown.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-});
