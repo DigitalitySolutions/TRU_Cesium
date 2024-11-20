@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const dropdown = document.getElementById('dropdown');
 
     // Define the API endpoint
-    const apiURL = 'https://api.example.com/data'; // Replace with your API endpoint
+    const apiURL = 'https://www.digitalitysolutions.co.uk/_functions/get_elrComplete'; // Replace with your API endpoint
 
     // Fetch data from the API
     fetch(apiURL)
