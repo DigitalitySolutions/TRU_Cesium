@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Assuming data is an array of objects with 'id' and 'name' properties
             data.forEach(item => {
                 const option = document.createElement('option');
-                option.value = item._id;
+                option.value = 'ELR';
                 option.textContent = item.elr;
                 dropdown.appendChild(option);
             });
