@@ -11,7 +11,7 @@ const routes = {
 
 document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.getElementById('ddELR');
-    const apiUrl = 'https://www.digitalitysolutions.co.uk/_functions/get_elrComplete'; // Replace with your actual API endpoint
+    const apiUrl = 'https://7ypjauhya1.execute-api.us-east-1.amazonaws.com/ElrVesrion1/mongo'; // Replace with your actual API endpoint
 
     // Fetch data from the API
     fetch(apiUrl)
