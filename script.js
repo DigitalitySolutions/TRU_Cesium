@@ -1,14 +1,3 @@
-// Initialize Cesium viewer 
-const viewer = new Cesium.Viewer('cesiumContainer'); // Example routes with coordinates 
-const routes = { 
-  'route1': [ 
-    Cesium.Cartesian3.fromDegrees(-75.10, 40.00), Cesium.Cartesian3.fromDegrees(-75.20, 40.00) 
-  ], 
-  'route2': [ 
-    Cesium.Cartesian3.fromDegrees(-75.30, 40.00), Cesium.Cartesian3.fromDegrees(-75.40, 40.00) 
-  ] 
-}; 
-
 document.addEventListener('DOMContentLoaded', () => {
     const dropdown = document.getElementById('ddELR');
     const apiUrl = 'https://7ypjauhya1.execute-api.us-east-1.amazonaws.com/ElrVesrion1/mongo'; // Replace with your actual API endpoint
